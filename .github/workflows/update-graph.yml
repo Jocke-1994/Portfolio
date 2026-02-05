@@ -1,0 +1,41 @@
+name: Update GitHub Graph Backup
+
+on:
+  schedule:
+    # Körs kl 00:00 varje söndag
+    - cron: '0 0 * * 0'
+  # Gör det möjligt att köra den manuellt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Download new graph image
+        run: |
+          # Laddar ner bilden och sparar den som github-static.png i images-mappen
+          curl -o images/github-static.png "https://grass-graph.moshimo.works/images/Jocke-1994.png"
+
+      - name: Check if image changed
+        id: check_changes
+        run: |
+          if [[ -n $(git status -s images/github-static.png) ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and Push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add images/github-static.png
+          git commit -m "Auto-update GitHub contribution graph"
+          git push
