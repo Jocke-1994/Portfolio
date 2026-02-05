@@ -6,287 +6,704 @@
     <title>Joakim Rehn | .NET Fullstack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #050816;
+            background-image: radial-gradient(circle at 50% 0%, #1a1f35 0%, #050816 70%);
+            color: #e6edf3;
+            overflow-x: hidden;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-        /* Anpassa färgen på github-charten om du vill */
-        .gh-chart {
-            max-width: 100%;
-            height: auto;
+
+        ::-webkit-scrollbar-track {
+            background: #050816;
         }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 5px;
+            border: 2px solid #050816;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #6366f1;
+            }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+            color: #6366f1;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .hero-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .skill-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+            .skill-item:hover {
+                background: rgba(30, 41, 59, 0.8);
+                transform: translateY(-2px);
+            }
+
+            .skill-item.active-skill {
+                background: rgba(30, 41, 59, 1);
+                border-color: #6366f1;
+                box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+            }
+
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+            .project-card:hover {
+                transform: translateY(-10px);
+                border-color: #6366f1;
+                box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25);
+            }
+
+        .flag-btn {
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 1.2rem;
+            border: 1px solid transparent;
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+
+            .flag-btn.active {
+                background-color: rgba(59, 130, 246, 0.2);
+                border-color: #3b82f6;
+                filter: grayscale(0%);
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .lia-dot {
+            animation: pulse-green 2s infinite;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #a855f7, #ec4899, #6366f1);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+        }
+
+            .slideshow-image.active {
+                opacity: 1;
+            }
+
+            .slideshow-image.inactive {
+                opacity: 0;
+            }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
 
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 font-bold text-xl text-indigo-600">JR.</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="hover:text-indigo-600 transition" data-i18n="nav_about">Om mig</a>
-                    <a href="#skills" class="hover:text-indigo-600 transition" data-i18n="nav_skills">Färdigheter</a>
-                    <a href="#projects" class="hover:text-indigo-600 transition" data-i18n="nav_projects">Projekt</a>
-                    <a href="#contact" class="hover:text-indigo-600 transition" data-i18n="nav_contact">Kontakt</a>
+    <nav class="fixed w-full bg-[#050816]/90 backdrop-blur-md shadow-sm border-b border-gray-800/50 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <div class="flex-shrink-0 font-bold text-xl tracking-wider text-gray-100">
+                    JOAKIM <span class="text-indigo-500">REHN</span>
                 </div>
-                <button id="lang-toggle" class="bg-gray-100 px-3 py-1 rounded-full text-sm font-semibold hover:bg-gray-200 transition">
-                    🇸🇪 / 🇬🇧
-                </button>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-sm font-medium text-gray-400 hover:text-white transition" data-i18n="nav_home">Hem</a>
+                    <a href="#about" class="text-sm font-medium text-gray-400 hover:text-white transition" data-i18n="nav_about">Om mig</a>
+                    <a href="#skills" class="text-sm font-medium text-gray-400 hover:text-white transition" data-i18n="nav_skills">Färdigheter</a>
+                    <a href="#projects" class="text-sm font-medium text-gray-400 hover:text-white transition" data-i18n="nav_projects">Projekt</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-400 hover:text-white transition" data-i18n="nav_contact">Kontakt</a>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <div class="hidden md:flex items-center gap-4 border-r border-gray-700 pr-5">
+                        <a href="https://github.com/Jocke-1994" target="_blank" class="text-gray-400 hover:text-white transition text-xl"><i class="devicon-github-original"></i></a>
+                        <a href="https://www.linkedin.com/in/joakimr94/" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-xl"><i class="devicon-linkedin-plain"></i></a>
+                    </div>
+                    <button id="lang-toggle" class="bg-black/40 rounded-full px-2 py-1 flex items-center gap-2 border border-gray-700/50 cursor-pointer">
+                        <div id="flag-sv" class="flag-btn active"><span class="fi fi-se"></span></div>
+                        <div id="flag-en" class="flag-btn"><span class="fi fi-gb"></span></div>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-4 text-center bg-gradient-to-b from-indigo-50 to-white">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-                Joakim Rehn
-            </h1>
-            <h2 class="text-2xl text-gray-600 mb-8" data-i18n="hero_title">
-                Fullstack .NET Utvecklare
-            </h2>
-            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_desc">
-                Jag bygger lösningar som håller när verkligheten slår till. Fokus på säkerhet, skalbarhet och Clean Architecture.
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="https://github.com/Jocke-1994" target="_blank" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition flex items-center gap-2">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/joakimr94/" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition flex items-center gap-2">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-            </div>
-        </div>
-    </section>
+    <section id="hero" class="pt-32 pb-20 px-4 min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute top-20 left-[-10%] w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <section id="about" class="py-20 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12" data-i18n="about_title">Om mig</h3>
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-                <p class="text-lg text-gray-600 mb-6" data-i18n="about_text1">
-                    Som blivande systemutvecklare med inriktning .NET drivs jag av att skapa säkra, skalbara produkter som ger tydligt värde. Jag har en bakgrund inom logistik och service, vilket lärt mig värdet av "produktionstempo" och ansvar.
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <div class="reveal active z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Gothenburg, Sweden</span>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    <span data-i18n="hero_hi">Hej, jag är</span> <span class="text-gradient">Joakim</span><br>
+                    <span data-i18n="hero_role">Fullstack .NET Utvecklare</span>
+                </h1>
+
+                <p class="text-lg text-gray-400 mb-8 max-w-lg leading-relaxed" data-i18n="hero_desc">
+                    Jag kombinerar teknisk kompetens i C# och React med bakgrund inom logistik för att bygga lösningar som håller när verkligheten slår till.
                 </p>
-                <p class="text-lg text-gray-600" data-i18n="about_text2">
-                    Jag rör mig obehindrat mellan SQL och datamodellering, säkra .NET API:er och moderna gränssnitt i React. Mitt mål är att skriva kod som nästa utvecklare inte behöver svära över – struktur, testbarhet och långsiktighet är mina ledord.
-                </p>
+
+                <div class="text-gray-400 text-lg mb-8 font-mono h-8">
+                    <span data-i18n="hero_focus">Fokus just nu:</span> <span id="typing-text" class="text-indigo-400 font-bold typing-cursor"></span>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition transform hover:-translate-y-1" data-i18n="btn_projects">
+                        Se Projekt
+                    </a>
+                    <a href="#contact" class="bg-slate-800/80 text-white border border-slate-700 px-8 py-3 rounded-full font-medium hover:bg-slate-800 transition" data-i18n="btn_contact">
+                        Kontakta Mig
+                    </a>
+                </div>
+
+                <div class="mt-12 flex gap-8 text-sm text-gray-500 border-t border-gray-800 pt-6">
+                    <div>
+                        <span class="block text-gray-300 font-semibold" data-i18n="stack_back">Backend</span>
+                        C#, .NET 8, API
+                    </div>
+                    <div>
+                        <span class="block text-gray-300 font-semibold" data-i18n="stack_front">Frontend</span>
+                        React, Tailwind
+                    </div>
+                    <div>
+                        <span class="block text-gray-300 font-semibold" data-i18n="stack_arch">Arkitektur</span>
+                        Clean Arch, CQRS
+                    </div>
+                </div>
             </div>
+
+            <div class="reveal active flex justify-center lg:justify-end z-10">
+                <div class="hero-card w-full max-w-md rounded-3xl p-6 relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-gray-400 font-medium" data-i18n="card_current">Just nu</span>
+                        <div class="bg-slate-900/80 border border-slate-700 px-3 py-1 rounded-full flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500 lia-dot"></span>
+                            <span class="text-xs text-white font-semibold uppercase" data-i18n="card_lia">Söker LIA: 2026-08-31 -- 2026-11-06</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 mb-6">
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <strong class="block text-white text-sm mb-1">Backend</strong>
+                            <span class="text-xs text-gray-400">.NET, SOLID, Clean Code</span>
+                        </div>
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <strong class="block text-white text-sm mb-1">Data</strong>
+                            <span class="text-xs text-gray-400">SQL Server, EF Core</span>
+                        </div>
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50">
+                            <strong class="block text-white text-sm mb-1">Frontend</strong>
+                            <span class="text-xs text-gray-400">React, JS, Tailwind</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-gray-300 border border-slate-700 flex items-center gap-1"><i class="devicon-csharp-plain text-indigo-400"></i> C#</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-gray-300 border border-slate-700 flex items-center gap-1"><i class="devicon-dotnetcore-plain text-purple-400"></i> .NET</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-gray-300 border border-slate-700 flex items-center gap-1"><i class="devicon-react-original text-blue-400"></i> React</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-gray-300 border border-slate-700 flex items-center gap-1"><i class="devicon-azure-plain text-blue-500"></i> Azure</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-gray-300 border border-slate-700 flex items-center gap-1"><i class="devicon-docker-plain text-blue-600"></i> Docker</span>
+                    </div>
+
+                    <div class="border-t border-slate-700/50 pt-4">
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mb-3">GitHub Achievements</div>
+                        <div class="flex gap-3">
+                            <div class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700 flex items-center gap-2 text-xs text-gray-300">
+                                🦈 <span>Pull Shark</span>
+                            </div>
+                            <div class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700 flex items-center gap-2 text-xs text-gray-300">
+                                🤠 <span>Quickdraw</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 flex justify-between text-xs text-gray-500">
+                        <span data-i18n="card_looking">Söker: Backend / Fullstack</span>
+                        <span class="text-indigo-400 font-semibold" data-i18n="card_reliable">⚡ Pålitlig & Driven</span>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="about" class="py-24 bg-[#0b1021]">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-12">
+
+            <div class="lg:col-span-3 reveal">
+                <span class="text-indigo-500 text-sm font-bold tracking-widest uppercase mb-2 block" data-i18n="about_label">Om mig</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-i18n="about_title">Vem jag är</h2>
+                <div class="space-y-4 text-gray-400 leading-relaxed">
+                    <p data-i18n="about_text1">
+                        Jag är en disciplinerad systemutvecklare baserad i Göteborg. Innan jag växlade till IT arbetade jag inom logistik och service (ICA Central Lager, Friskis & Svettis), där jag lärde mig värdet av effektivitet och ansvar.
+                    </p>
+                    <p data-i18n="about_text2">
+                        Nu applicerar jag samma mindset på kod. Jag specialiserar mig på strukturerad backend med Clean Architecture och intuitiv frontend. Jag skriver inte bara kod; jag bygger lösningar som är underhållbara och testbara.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 mt-8">
+                    <div class="bg-slate-800/50 border border-slate-700 px-3 py-1 rounded-md text-sm text-gray-300" data-i18n="lang_swe">🇸🇪 Svenska (Modersmål)</div>
+                    <div class="bg-slate-800/50 border border-slate-700 px-3 py-1 rounded-md text-sm text-gray-300" data-i18n="lang_eng">🇬🇧 Engelska (Flytande)</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 reveal delay-100">
+                <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                    <h3 class="text-white font-bold text-lg mb-4" data-i18n="strengths_title">Nyckelstyrkor</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-indigo-500 mt-1"></i>
+                            <span data-i18n="strength_1">Produktions-mindset (CI/CD, DevOps)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-indigo-500 mt-1"></i>
+                            <span data-i18n="strength_2">Clean Architecture & Domain Driven Design</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-indigo-500 mt-1"></i>
+                            <span data-i18n="strength_3">Databasmodellering & SQL Optimering</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-indigo-500 mt-1"></i>
+                            <span data-i18n="strength_4">Ansvarstagande & Kommunikativ Teamspelare</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-gray-50 px-4">
-        <div class="max-w-5xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12" data-i18n="skills_title">Teknisk Stack</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-server"></i></div>
-                    <h4 class="font-bold text-xl mb-4">Backend & .NET</h4>
-                    <p class="text-gray-600">C#, ASP.NET Core, Minimal APIs, Clean Architecture, CQRS, MediatR, xUnit.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-code"></i></div>
-                    <h4 class="font-bold text-xl mb-4">Frontend</h4>
-                    <p class="text-gray-600">React, JavaScript, Tailwind CSS, HTML5, CSS3, Blazor.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-database"></i></div>
-                    <h4 class="font-bold text-xl mb-4">Data & DevOps</h4>
-                    <p class="text-gray-600">SQL Server, EF Core, Azure, Docker, CI/CD (GitHub Actions), Git.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-20 px-4">
+    <section id="skills" class="py-24 px-4">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12" data-i18n="projects_title">Utvalda Projekt</h3>
+            <span class="text-indigo-500 text-sm font-bold tracking-widest uppercase mb-2 block text-center" data-i18n="skills_label">Kompetens</span>
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-i18n="skills_title">Tekniska Färdigheter</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal">
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 project-card transition duration-300 flex flex-col">
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-xl">Neverland Adventure</h4>
-                            <a href="https://github.com/Jocke-1994/NeverlandAdventure" target="_blank" class="text-gray-400 hover:text-gray-900"><i class="fab fa-github fa-lg"></i></a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="skill-item active-skill p-4 rounded-xl bg-slate-900/80 border border-slate-700" onclick="updateSkill(this, 'backend')">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-semibold">C# / .NET</span>
+                            <span class="text-xs text-gray-500" data-i18n="lvl_adv">Avancerad</span>
                         </div>
-                        <p class="text-gray-600 mb-6 text-sm" data-i18n="proj1_desc">
-                            Ett interaktivt textbaserat äventyrsspel utvecklat för att demonstrera objektorienterad programmering och logikhantering i C#. Spelaren navigerar genom olika scenarion baserat på val.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full font-medium">C#</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full font-medium">.NET Console</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full font-medium">OOP</span>
+                        <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 w-[90%]"></div></div>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl bg-slate-900/80 border-slate-700" onclick="updateSkill(this, 'data')">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-semibold">SQL & Data</span>
+                            <span class="text-xs text-gray-500" data-i18n="lvl_adv">Avancerad</span>
                         </div>
+                        <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-purple-500 w-[85%]"></div></div>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl bg-slate-900/80 border-slate-700" onclick="updateSkill(this, 'frontend')">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-semibold">Frontend</span>
+                            <span class="text-xs text-gray-500" data-i18n="lvl_mid">Medel</span>
+                        </div>
+                        <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-blue-500 w-[75%]"></div></div>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl bg-slate-900/80 border-slate-700" onclick="updateSkill(this, 'devops')">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-white font-semibold">DevOps</span>
+                            <span class="text-xs text-gray-500" data-i18n="lvl_tools">Verktyg</span>
+                        </div>
+                        <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-green-500 w-[60%]"></div></div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 project-card transition duration-300 flex flex-col">
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-xl">Travel Journal</h4>
-                            <a href="https://github.com/Jocke-1994/Travel-Journal" target="_blank" class="text-gray-400 hover:text-gray-900"><i class="fab fa-github fa-lg"></i></a>
-                        </div>
-                        <p class="text-gray-600 mb-6 text-sm" data-i18n="proj2_desc">
-                            En modern webbapplikation byggd i React för att dokumentera och visa upp resmål. Fokus på komponentåteranvändning och responsiv design med CSS/Tailwind.
+                <div class="flex flex-col gap-6">
+                    <div class="bg-slate-900/90 border border-slate-700 p-6 rounded-2xl h-full flex flex-col justify-center">
+                        <span class="text-xs text-gray-500 uppercase tracking-widest mb-2" data-i18n="skill_focus_title">Fokusområde</span>
+                        <p id="skill-desc" class="text-lg text-gray-200">
+                            Expertis inom C#, .NET Core, Minimal APIs, och skalbara arkitekturmönster som CQRS och Clean Architecture.
                         </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full font-medium">React</span>
-                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full font-medium">JavaScript</span>
-                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full font-medium">CSS</span>
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 project-card transition duration-300 flex flex-col">
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-xl">Gym Membership System</h4>
-                            <a href="https://github.com/Jocke-1994/GymMembershipSystem" target="_blank" class="text-gray-400 hover:text-gray-900"><i class="fab fa-github fa-lg"></i></a>
-                        </div>
-                        <p class="text-gray-600 mb-6 text-sm" data-i18n="proj3_desc">
-                            Ett komplett backend-system för att hantera medlemskap, bokningar och aktiviteter. Implementerar CRUD-operationer mot en SQL-databas med fokus på dataintegritet.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">C#</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">SQL Server</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">Entity Framework</span>
-                        </div>
+            <div class="mt-12 bg-slate-900/50 border border-slate-800 rounded-2xl p-6 reveal">
+                <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-800">
+                    <div class="flex items-center gap-2 text-white font-semibold">
+                        <i class="devicon-github-original"></i> <span data-i18n="git_activity">Kodaktivitet</span>
                     </div>
+                    <a href="https://github.com/Jocke-1994" target="_blank" class="text-xs text-indigo-400 hover:text-white transition" data-i18n="view_profile">Visa Profil →</a>
                 </div>
+                <div class="overflow-x-auto">
+                    <img src="https://ghchart.rshah.org/6366f1/Jocke-1994" alt="Github Chart" class="min-w-[600px] w-full opacity-90">
+                </div>
+                <div class="mt-4 text-xs text-gray-500 text-center" data-i18n="git_push">Pushar kod och levererar features kontinuerligt.</div>
+            </div>
+        </div>
+    </section>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 project-card transition duration-300 flex flex-col">
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-xl">Labyrinth Game</h4>
-                            <a href="https://github.com/Jocke-1994/LabyrinthGame" target="_blank" class="text-gray-400 hover:text-gray-900"><i class="fab fa-github fa-lg"></i></a>
+    <section id="projects" class="py-24 bg-[#0b1021]">
+        <div class="max-w-7xl mx-auto px-4">
+            <span class="text-indigo-500 text-sm font-bold tracking-widest uppercase mb-2 block">Portfolio</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8" data-i18n="projects_title">Vad jag har byggt</h2>
+
+            <div class="flex flex-wrap gap-3 mb-12">
+                <button class="filter-btn active px-4 py-1.5 rounded-full bg-indigo-600 text-white text-sm border border-transparent transition" onclick="filterProjects('all', this)" data-i18n="filter_all">Alla</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full bg-slate-800 text-gray-400 text-sm border border-slate-700 hover:bg-slate-700 transition" onclick="filterProjects('web', this)" data-i18n="filter_web">Webb & Frontend</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full bg-slate-800 text-gray-400 text-sm border border-slate-700 hover:bg-slate-700 transition" onclick="filterProjects('backend', this)" data-i18n="filter_backend">Backend & Logik</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="web">
+                    <div class="relative w-full h-48 overflow-hidden bg-gray-900 project-slideshow">
+
+                        <img src="images/FirstMenu.png" alt="Main Menu" class="slideshow-image active">
+                        <img src="images/WorldMap.png" alt="World Map Visualization" class="slideshow-image inactive">
+                        <img src="images/AllTrips.png" alt="List of trips" class="slideshow-image inactive">
+                        <img src="images/TravelSavings.png" alt="Budget & Savings" class="slideshow-image inactive">
+                        <img src="images/DreamVacation.png" alt="Dream Vacation Logic" class="slideshow-image inactive">
+                        <img src="images/AddPrevious.png" alt="Add Trip Form" class="slideshow-image inactive">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-grow relative">
+                        <div class="mb-4">
+                            <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_webapp">Webbapplikation</span>
+                            <h3 class="text-xl font-bold text-white group-hover:text-teal-400 transition">Travel Journal</h3>
                         </div>
-                        <p class="text-gray-600 mb-6 text-sm" data-i18n="proj4_desc">
-                            En algoritmisk implementation av ett labyrintspel. Hanterar kollisionsdetektering, spelar-input och spellogik. Byggt för att visa förståelse för datastrukturer.
+                        <p class="text-sm text-gray-400 mb-6 flex-grow leading-relaxed" data-i18n="proj2_desc">
+                            Modern webbapplikation i React för att dokumentera resmål. Responsiv UI med Tailwind.
                         </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">C#</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">Algorithms</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">Logic</span>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">React</span>
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">JS</span>
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">Tailwind</span>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <a href="https://github.com/Jocke-1994/Travel-Journal" target="_blank" class="text-sm font-medium text-teal-400 flex items-center gap-1 hover:text-white transition"><span data-i18n="view_code">Se kod</span> <span>↗</span></a>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="backend">
+                    <div class="relative w-full h-48 bg-[#1e1e1e] flex flex-col overflow-hidden">
+                        <div class="flex items-center gap-1.5 px-4 py-3 bg-[#2d2d2d] border-b border-white/5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                            <div class="ml-4 text-[10px] text-gray-400 font-mono">GymContext.cs</div>
+                        </div>
+
+                        <div class="p-4 font-mono text-xs leading-relaxed opacity-90 group-hover:scale-105 transition duration-500 origin-top-left">
+                            <div class="text-pink-400">public class <span class="text-blue-400">GymContext</span> : <span class="text-green-400">DbContext</span></div>
+                            <div class="text-gray-300">{</div>
+                            <div class="pl-4 text-gray-400"><span class="text-blue-400">DbSet</span>&lt;<span class="text-green-400">Member</span>&gt; Members { <span class="text-pink-400">get; set;</span> }</div>
+                            <div class="pl-4 text-gray-400"><span class="text-blue-400">DbSet</span>&lt;<span class="text-green-400">Session</span>&gt; Sessions { <span class="text-pink-400">get; set;</span> }</div>
+                            <div class="pl-4 text-gray-400"><span class="text-blue-400">DbSet</span>&lt;<span class="text-green-400">Booking</span>&gt; Bookings { <span class="text-pink-400">get; set;</span> }</div>
+                            <div class="pl-4 mt-2 text-gray-500">// Configured for SQL Server</div>
+                            <div class="text-gray-300">}</div>
+                        </div>
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="mb-4">
+                            <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_system">System</span>
+                            <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition">Gym System</h3>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 flex-grow leading-relaxed" data-i18n="proj3_desc">
+                            Komplett backend för medlemskap och bokningar. CRUD-operationer mot SQL Databas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">SQL</span>
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">EF Core</span>
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">C#</span>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <a href="https://github.com/Jocke-1994/GymMembershipSystem" target="_blank" class="text-sm font-medium text-indigo-400 flex items-center gap-1 hover:text-white transition"><span data-i18n="view_code">Se kod</span> <span>↗</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="backend">
+                    <div class="relative w-full h-48 overflow-hidden bg-gray-900 project-slideshow">
+
+                        <img src="images/labyrinth-menu.png" alt="Labyrinth Menu" class="slideshow-image active">
+
+                        <img src="images/dynamicLevel1.png" alt="Level 1" class="slideshow-image inactive">
+
+                        <img src="images/dyamiclevel2.png" alt="Level 2" class="slideshow-image inactive">
+
+                        <img src="images/crashImage.png" alt="Crash Screen" class="slideshow-image inactive">
+
+                        <img src="images/SweCompleted.png" alt="Completed" class="slideshow-image inactive">
+
+                        <img src="images/Tutorial.png" alt="Tutorial" class="slideshow-image inactive">
+
+                        <img src="images/Setting.png" alt="Settings" class="slideshow-image inactive">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-grow relative">
+                        <div class="mb-4">
+                            <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_game">Spellogik</span>
+                            <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition">Labyrinth Game</h3>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 flex-grow leading-relaxed" data-i18n="proj4_desc">
+                            Algoritmisk implementation av ett labyrintspel. Kollisionsdetektering och logik.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">Algorithms</span>
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">C#</span>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <a href="https://github.com/Jocke-1994/LabyrinthGame" target="_blank" class="text-sm font-medium text-purple-400 flex items-center gap-1 hover:text-white transition"><span data-i18n="view_code">Se kod</span> <span>↗</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="backend">
+                    <div class="h-2 w-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="mb-4">
+                            <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_console">Konsolapp</span>
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Neverland Adventure</h3>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6 flex-grow leading-relaxed" data-i18n="proj1_desc">
+                            Interaktivt textbaserat äventyr som demonstrerar OOP och logikhantering.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">OOP</span>
+                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">C#</span>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <a href="https://github.com/Jocke-1994/NeverlandAdventure" target="_blank" class="text-sm font-medium text-cyan-400 flex items-center gap-1 hover:text-white transition"><span data-i18n="view_code">Se kod</span> <span>↗</span></a>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </div>
     </section>
 
-    <section class="py-12 bg-white px-4 border-t border-gray-100">
-        <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-2xl font-bold mb-6 text-gray-800" data-i18n="activity_title">GitHub Aktivitet</h3>
-            <p class="text-gray-600 mb-8" data-i18n="activity_desc">Min kodaktivitet det senaste året.</p>
+    <section id="contact" class="py-24 px-4 relative">
+        <div class="max-w-4xl mx-auto bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12 relative overflow-hidden reveal">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-600/20 rounded-full blur-[80px] pointer-events-none"></div>
 
-            <div class="flex justify-center overflow-x-auto">
-                <img src="https://ghchart.rshah.org/219138/Jocke-1994" alt="Jocke-1994's Github Chart" class="gh-chart" />
-            </div>
-            <div class="mt-4 text-sm text-gray-400">
-                <a href="https://github.com/Jocke-1994" target="_blank" class="hover:underline">Se fullständig profil på GitHub</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-indigo-500 text-sm font-bold tracking-widest uppercase mb-2 block" data-i18n="nav_contact">Kontakt</span>
+                    <h2 class="text-3xl font-bold text-white mb-6" data-i18n="contact_title">Hör av dig</h2>
+                    <p class="text-gray-400 mb-8" data-i18n="contact_desc">
+                        Letar du efter en strukturerad utvecklare för LIA eller Junior-roller? Skicka ett mail.
+                    </p>
+                    <div class="flex gap-4 mt-8">
+                        <a href="https://www.linkedin.com/in/joakimr94/" class="bg-[#0077b5] text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition flex items-center gap-2">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/Jocke-1994" class="bg-[#24292e] text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition flex items-center gap-2">
+                            <i class="fab fa-github"></i> Github
+                        </a>
+                    </div>
+                </div>
+
+                <form action="mailto:jocke.94@hotmail.se" method="POST" enctype="text/plain" class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase mb-1" data-i18n="form_name">Namn</label>
+                        <input type="text" name="name" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase mb-1">Email</label>
+                        <input type="email" name="email" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase mb-1" data-i18n="form_msg">Meddelande</label>
+                        <textarea name="message" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transition transform hover:-translate-y-1" data-i18n="form_btn">
+                        Skicka Meddelande
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-gray-900 text-white px-4">
-        <div class="max-w-lg mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-8" data-i18n="contact_title">Hör av dig</h3>
-            <p class="text-gray-400 mb-8" data-i18n="contact_desc">
-                Letar du efter en utvecklare som levererar "rätt" och inte bara snabbt? Skicka ett mail eller kontakta mig på LinkedIn.
-            </p>
-
-            <form action="mailto:jocke.94@hotmail.se" method="POST" enctype="text/plain" class="space-y-4 text-left">
-                <div>
-                    <label class="block text-sm font-medium mb-1" data-i18n="form_name">Namn</label>
-                    <input type="text" name="name" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-indigo-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1">Email</label>
-                    <input type="email" name="email" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-indigo-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1" data-i18n="form_msg">Meddelande</label>
-                    <textarea name="message" rows="4" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-indigo-500"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-indigo-600 py-3 rounded-lg font-bold hover:bg-indigo-700 transition" data-i18n="form_btn">
-                    Skicka Meddelande
-                </button>
-            </form>
-
-            <div class="mt-12 flex justify-center space-x-8">
-                <a href="https://www.linkedin.com/in/joakimr94/" class="text-gray-400 hover:text-white transition text-2xl"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Jocke-1994" class="text-gray-400 hover:text-white transition text-2xl"><i class="fab fa-github"></i></a>
-                <a href="mailto:jocke.94@hotmail.se" class="text-gray-400 hover:text-white transition text-2xl"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="mt-8 text-gray-500 text-sm">© 2026 Joakim Rehn.</p>
-        </div>
-    </section>
+    <footer class="py-8 border-t border-gray-800/50 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 Joakim Rehn. Built with HTML & Tailwind.</p>
+    </footer>
 
     <script>
         const translations = {
             sv: {
-                nav_about: "Om mig",
-                nav_skills: "Färdigheter",
-                nav_projects: "Projekt",
-                nav_contact: "Kontakt",
-                hero_title: "Fullstack .NET Utvecklare",
-                hero_desc: "Jag bygger lösningar som håller när verkligheten slår till. Fokus på säkerhet, skalbarhet och Clean Architecture.",
-                about_title: "Om mig",
-                about_text1: "Som blivande systemutvecklare med inriktning .NET drivs jag av att skapa säkra, skalbara produkter som ger tydligt värde. Jag har en bakgrund inom logistik och service, vilket lärt mig värdet av 'produktionstempo' och ansvar.",
-                about_text2: "Jag rör mig obehindrat mellan SQL och datamodellering, säkra .NET API:er och moderna gränssnitt i React. Mitt mål är att skriva kod som nästa utvecklare inte behöver svära över – struktur, testbarhet och långsiktighet är mina ledord.",
-                skills_title: "Teknisk Stack",
-                projects_title: "Utvalda Projekt",
-                contact_title: "Hör av dig",
-                contact_desc: "Letar du efter en utvecklare som levererar 'rätt' och inte bara snabbt? Skicka ett mail eller kontakta mig på LinkedIn.",
-                form_name: "Namn",
-                form_msg: "Meddelande",
-                form_btn: "Skicka Meddelande",
-                activity_title: "GitHub Aktivitet",
-                activity_desc: "Min kodaktivitet det senaste året.",
-                // Project Descriptions
-                proj1_desc: "Ett interaktivt textbaserat äventyrsspel utvecklat för att demonstrera objektorienterad programmering och logikhantering i C#. Spelaren navigerar genom olika scenarion baserat på val.",
-                proj2_desc: "En modern webbapplikation byggd i React för att dokumentera och visa upp resmål. Fokus på komponentåteranvändning och responsiv design med CSS/Tailwind.",
-                proj3_desc: "Ett komplett backend-system för att hantera medlemskap, bokningar och aktiviteter. Implementerar CRUD-operationer mot en SQL-databas med fokus på dataintegritet.",
-                proj4_desc: "En algoritmisk implementation av ett labyrintspel. Hanterar kollisionsdetektering, spelar-input och spellogik. Byggt för att visa förståelse för datastrukturer."
+                nav_home: "Hem", nav_about: "Om mig", nav_skills: "Färdigheter", nav_projects: "Projekt", nav_contact: "Kontakt",
+                hero_hi: "Hej, jag är", hero_role: "Fullstack .NET Utvecklare",
+                hero_desc: "Jag kombinerar teknisk kompetens i C# och React med bakgrund inom logistik för att bygga lösningar som håller när verkligheten slår till.",
+                hero_focus: "Fokus just nu:",
+                btn_projects: "Se Projekt", btn_contact: "Kontakta Mig",
+                stack_back: "Backend", stack_front: "Frontend", stack_arch: "Arkitektur",
+                card_current: "Just nu", card_lia: "Söker LIA: 2026-08-31 -- 2026-11-06", card_looking: "Söker: Backend / Fullstack", card_reliable: "⚡ Pålitlig & Driven",
+                about_label: "Om mig", about_title: "Vem jag är",
+                about_text1: "Jag är en disciplinerad systemutvecklare baserad i Göteborg. Innan jag växlade till IT arbetade jag bland annat inom logistik och service (ICA Central Lager, Friskis & Svettis), där jag lärde mig värdet av effektivitet och ansvar.",
+                about_text2: "Nu applicerar jag samma mindset på kod. Jag specialiserar mig på strukturerad backend med Clean Architecture och intuitiv frontend.",
+                lang_swe: "🇸🇪 Svenska (Modersmål)", lang_eng: "🇬🇧 Engelska (Flytande)",
+                strengths_title: "Nyckelstyrkor",
+                strength_1: "Produktions-mindset (CI/CD, DevOps)",
+                strength_2: "Clean Architecture & Domain Driven Design",
+                strength_3: "Databasmodellering & SQL Optimering",
+                strength_4: "Ansvarstagande & Kommunikativ Teamspelare",
+                skills_label: "Kompetens", skills_title: "Tekniska Färdigheter",
+                lvl_adv: "Avancerad", lvl_mid: "Medel", lvl_tools: "Verktyg",
+                skill_focus_title: "Fokusområde",
+                git_activity: "Kodaktivitet", view_profile: "Visa Profil →", git_push: "Pushar kod och levererar features kontinuerligt.",
+                projects_title: "Vad jag har byggt",
+                filter_all: "Alla", filter_web: "Webb & Frontend", filter_backend: "Backend & Logik",
+                type_webapp: "Webbapplikation", type_system: "System", type_game: "Spellogik", type_console: "Konsolapp",
+                view_code: "Se kod",
+                contact_title: "Hör av dig", contact_desc: "Letar du efter en strukturerad utvecklare för LIA eller Junior-roller? Skicka ett mail.",
+                form_name: "Namn", form_msg: "Meddelande", form_btn: "Skicka Meddelande",
+                proj2_desc: "Modern webbapplikation i React för att dokumentera resmål. Responsiv UI med Tailwind.",
+                proj3_desc: "Komplett backend för medlemskap och bokningar. CRUD-operationer mot SQL Databas.",
+                proj4_desc: "Algoritmisk implementation av ett labyrintspel. Kollisionsdetektering och logik.",
+                proj1_desc: "Interaktivt textbaserat äventyr som demonstrerar OOP och logikhantering."
             },
             en: {
-                nav_about: "About",
-                nav_skills: "Skills",
-                nav_projects: "Projects",
-                nav_contact: "Contact",
-                hero_title: "Fullstack .NET Developer",
-                hero_desc: "Building solutions that last when reality hits. Focused on security, scalability, and Clean Architecture.",
-                about_title: "About Me",
-                about_text1: "As an aspiring .NET developer, I am driven by creating secure, scalable products that deliver clear value. With a background in logistics and service, I understand the importance of production pace and responsibility.",
-                about_text2: "I move seamlessly between SQL data modeling, secure .NET APIs, and modern React interfaces. My goal is to write code that the next developer won't curse at—structure, testability, and longevity are my keywords.",
-                skills_title: "Tech Stack",
-                projects_title: "Selected Projects",
-                contact_title: "Get in Touch",
-                contact_desc: "Looking for a developer who delivers it 'right', not just fast? Send me an email or connect on LinkedIn.",
-                form_name: "Name",
-                form_msg: "Message",
-                form_btn: "Send Message",
-                activity_title: "GitHub Activity",
-                activity_desc: "My code contributions over the last year.",
-                // Project Descriptions
-                proj1_desc: "An interactive text-based adventure game developed to demonstrate Object-Oriented Programming and logic handling in C#. The player navigates through scenarios based on choices.",
-                proj2_desc: "A modern web application built in React to document and display travel destinations. Focuses on component reusability and responsive design with CSS/Tailwind.",
-                proj3_desc: "A complete backend system for managing memberships, bookings, and activities. Implements CRUD operations against a SQL database with a focus on data integrity.",
-                proj4_desc: "An algorithmic implementation of a labyrinth game. Handles collision detection, player input, and game logic. Built to demonstrate understanding of data structures."
+                nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
+                hero_hi: "Hi, I'm", hero_role: "Fullstack .NET Developer",
+                hero_desc: "I combine technical skills in C# and React with a background in logistics to build solutions that hold up when reality hits.",
+                hero_focus: "Currently focused on:",
+                btn_projects: "View Projects", btn_contact: "Contact Me",
+                stack_back: "Backend", stack_front: "Frontend", stack_arch: "Architecture",
+                card_current: "Currently", card_lia: "Open for LIA: 2026-08-31 -- 2026-11-06", card_looking: "Looking for: Backend / Fullstack", card_reliable: "⚡ Proven Reliability",
+                about_label: "About", about_title: "Who I am",
+                about_text1: "I’m a highly disciplined software engineer based in Gothenburg. Before transitioning to tech, I´ve worked in logistics and service, among other things, (ICA Central Lager, Friskis & Svettis), where I learned the value of efficiency and responsibility.",
+                about_text2: "Now, I apply that same mindset to code. I specialize in building structured backends with Clean Architecture and intuitive frontends.",
+                lang_swe: "🇸🇪 Swedish (Native)", lang_eng: "🇬🇧 English (Fluent)",
+                strengths_title: "Key Strengths",
+                strength_1: "Production-ready mindset (CI/CD, DevOps)",
+                strength_2: "Clean Architecture & Domain Driven Design",
+                strength_3: "Database modeling & SQL Optimization",
+                strength_4: "Responsible & Communicative Team Player",
+                skills_label: "Expertise", skills_title: "Technical Skills",
+                lvl_adv: "Advanced", lvl_mid: "Intermediate", lvl_tools: "Tools",
+                skill_focus_title: "Skill Focus",
+                git_activity: "Coding Activity", view_profile: "View Profile →", git_push: "Constantly pushing code & shipping features.",
+                projects_title: "What I've been building",
+                filter_all: "All", filter_web: "Web & Frontend", filter_backend: "Backend & Logic",
+                type_webapp: "Web App", type_system: "System", type_game: "Game Logic", type_console: "Console App",
+                view_code: "View Code",
+                contact_title: "Let's talk", contact_desc: "Looking for a structured developer for LIA or Junior roles? I'm just an email away.",
+                form_name: "Name", form_msg: "Message", form_btn: "Send Message",
+                proj2_desc: "Modern web app in React to document travel destinations. Responsive UI with Tailwind.",
+                proj3_desc: "Complete backend for memberships and bookings. CRUD operations vs SQL Database.",
+                proj4_desc: "Algorithmic implementation of a maze game. Collision detection and logic.",
+                proj1_desc: "Interactive text-based adventure demonstrating OOP and logic handling."
             }
         };
 
+        const skillDescriptions = {
+            sv: {
+                'backend': "Expertis inom C#, .NET Core, Minimal APIs, och skalbara arkitekturmönster som CQRS och Clean Architecture.",
+                'data': "Stark erfarenhet av SQL Server, Relationsdatabaser, Normalisering och optimering av Entity Framework Core.",
+                'frontend': "Bygger responsiva och moderna gränssnitt med React, JavaScript, Tailwind CSS och Blazor.",
+                'devops': "Erfarenhet av CI/CD pipelines (GitHub Actions), Docker-containerisering och Azure molndrift."
+            },
+            en: {
+                'backend': "Expertise in C#, .NET Core, Minimal APIs, and scalable architecture patterns like CQRS and Clean Architecture.",
+                'data': "Strong experience with SQL Server, Relational Database Design, Normalization, and Entity Framework Core optimization.",
+                'frontend': "Building responsive and modern user interfaces using React, JavaScript, Tailwind CSS and Blazor.",
+                'devops': "Experience with CI/CD pipelines (GitHub Actions), Docker containerization, and Azure cloud deployment."
+            }
+        };
+
+        const typingPhrases = {
+            sv: ["ren C# kod", "skalbar arkitektur", "moderna React UIs", "problemlösning"],
+            en: ["clean C# code", "scalable architecture", "modern React UIs", "solving real problems"]
+        };
+
         let currentLang = 'sv';
+        let activeSkillKey = 'backend';
+
         const langToggle = document.getElementById('lang-toggle');
+        const flagSv = document.getElementById('flag-sv');
+        const flagEn = document.getElementById('flag-en');
 
         langToggle.addEventListener('click', () => {
             currentLang = currentLang === 'sv' ? 'en' : 'sv';
+
+            if (currentLang === 'sv') {
+                flagSv.classList.add('active');
+                flagEn.classList.remove('active');
+            } else {
+                flagEn.classList.add('active');
+                flagSv.classList.remove('active');
+            }
+
             updateContent();
+            updateSkillText(activeSkillKey);
+            restartTypewriter();
         });
 
         function updateContent() {
@@ -297,6 +714,124 @@
                 }
             });
         }
+
+        function updateSkill(element, skillKey) {
+            activeSkillKey = skillKey;
+
+            document.querySelectorAll('.skill-item').forEach(el => {
+                el.classList.remove('active-skill', 'bg-slate-900', 'border-indigo-500');
+                el.classList.add('bg-slate-900/80', 'border-slate-700');
+            });
+
+            element.classList.remove('bg-slate-900/80', 'border-slate-700');
+            element.classList.add('active-skill');
+
+            updateSkillText(skillKey);
+        }
+
+        function updateSkillText(skillKey) {
+            const descBox = document.getElementById('skill-desc');
+            descBox.style.opacity = 0;
+            setTimeout(() => {
+                descBox.textContent = skillDescriptions[currentLang][skillKey];
+                descBox.style.opacity = 1;
+            }, 200);
+        }
+
+        const typingText = document.getElementById("typing-text");
+        let phraseIndex = 0, charIndex = 0, isDeleting = false, typeTimeout;
+
+        function typeWriter() {
+            const phrases = typingPhrases[currentLang];
+            const current = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typingText.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            typeTimeout = setTimeout(typeWriter, typeSpeed);
+        }
+
+        function restartTypewriter() {
+            clearTimeout(typeTimeout);
+            isDeleting = false;
+            charIndex = 0;
+            phraseIndex = 0;
+            typingText.textContent = "";
+            typeWriter();
+        }
+
+        document.addEventListener('DOMContentLoaded', typeWriter);
+
+        function filterProjects(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-gray-400');
+            });
+            btnElement.classList.remove('bg-slate-800', 'text-gray-400');
+            btnElement.classList.add('bg-indigo-600', 'text-white');
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => card.style.opacity = 1, 50);
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = 0;
+                }
+            });
+        }
+
+        // --- AUTOMATIC SLIDESHOW LOGIC ---
+        function startSlideshows() {
+            const slideshows = document.querySelectorAll('.project-slideshow');
+
+            slideshows.forEach(container => {
+                const images = container.querySelectorAll('.slideshow-image');
+                if (images.length < 2) return; // Behöver minst 2 bilder för att rotera
+
+                let currentIndex = 0;
+
+                setInterval(() => {
+                    // Dölj nuvarande
+                    images[currentIndex].classList.remove('active');
+                    images[currentIndex].classList.add('inactive');
+
+                    // Gå till nästa (loopa runt)
+                    currentIndex = (currentIndex + 1) % images.length;
+
+                    // Visa nästa
+                    images[currentIndex].classList.remove('inactive');
+                    images[currentIndex].classList.add('active');
+                }, 3000); // 3 sekunders intervall
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', startSlideshows);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
