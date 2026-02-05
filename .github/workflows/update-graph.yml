@@ -19,13 +19,14 @@ jobs:
 
       - name: Download new graph image
         run: |
-          # Laddar ner bilden och sparar den som github-static.png i images-mappen
-          curl -o images/github-static.png "https://grass-graph.moshimo.works/images/Jocke-1994.png"
+          # Laddar ner grafen som SVG med din lila färgkod (6366f1)
+          curl -o images/github-static.svg "https://ghchart.rshah.org/6366f1/Jocke-1994"
 
       - name: Check if image changed
         id: check_changes
         run: |
-          if [[ -n $(git status -s images/github-static.png) ]]; then
+          # Kollar om filen ändrats (nu mot .svg)
+          if [[ -n $(git status -s images/github-static.svg) ]]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
@@ -36,6 +37,7 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add images/github-static.png
+          # Lägger till den nya SVG-filen
+          git add images/github-static.svg
           git commit -m "Auto-update GitHub contribution graph"
           git push
