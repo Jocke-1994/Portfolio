@@ -394,7 +394,7 @@
                     <a href="https://github.com/Jocke-1994" target="_blank" class="text-xs text-indigo-400 hover:text-white transition" data-i18n="view_profile">Visa Profil →</a>
                 </div>
                 <div class="overflow-x-auto">
-                    <img src="https://ghchart.rshah.org/6366f1/Jocke-1994" alt="Github Chart" class="min-w-[600px] w-full opacity-90">
+                    <img src="https://grass-graph.moshimo.works/images/Jocke-1994.png" alt="Github Chart" class="min-w-[600px] w-full opacity-90 filter hue-rotate-[240deg]">
                 </div>
                 <div class="mt-4 text-xs text-gray-500 text-center" data-i18n="git_push">Pushar kod och levererar features kontinuerligt.</div>
             </div>
@@ -570,19 +570,23 @@
                     </div>
                 </div>
 
-                <form action="mailto:jocke.94@hotmail.se" method="POST" enctype="text/plain" class="space-y-4">
+                <form action="https://formspree.io/f/xreazarw" method="POST" class="space-y-4">
+                    
                     <div>
                         <label class="block text-xs text-gray-500 uppercase mb-1" data-i18n="form_name">Namn</label>
-                        <input type="text" name="name" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition">
+                        <input type="text" name="name" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition">
                     </div>
+                    
                     <div>
                         <label class="block text-xs text-gray-500 uppercase mb-1">Email</label>
-                        <input type="email" name="email" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition">
+                        <input type="email" name="email" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition">
                     </div>
+                    
                     <div>
                         <label class="block text-xs text-gray-500 uppercase mb-1" data-i18n="form_msg">Meddelande</label>
-                        <textarea name="message" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition"></textarea>
+                        <textarea name="message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:border-indigo-500 focus:outline-none transition"></textarea>
                     </div>
+                    
                     <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transition transform hover:-translate-y-1" data-i18n="form_btn">
                         Skicka Meddelande
                     </button>
