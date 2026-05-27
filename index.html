@@ -460,47 +460,6 @@
                 </article>
 
                 <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="backend">
-                    <div class="relative w-full h-48 bg-[#1e1e1e] flex flex-col overflow-hidden">
-                        <div class="flex items-center gap-1.5 px-4 py-3 bg-[#2d2d2d] border-b border-white/5">
-                            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                            <div class="ml-4 text-[10px] text-gray-400 font-mono">GymContext.cs</div>
-                        </div>
-
-                        <div class="p-4 font-mono text-xs leading-relaxed opacity-90 group-hover:scale-105 transition duration-500 origin-top-left">
-                            <div class="text-pink-400">public class <span class="text-blue-400">GymContext</span> : <span class="text-green-400">DbContext</span></div>
-                            <div class="text-gray-300">{</div>
-                            <div class="pl-4 text-gray-400"><span class="text-blue-400">DbSet</span>&lt;<span class="text-green-400">Member</span>&gt; Members { <span class="text-pink-400">get; set;</span> }</div>
-                            <div class="pl-4 text-gray-400"><span class="text-blue-400">DbSet</span>&lt;<span class="text-green-400">Session</span>&gt; Sessions { <span class="text-pink-400">get; set;</span> }</div>
-                            <div class="pl-4 text-gray-400"><span class="text-blue-400">DbSet</span>&lt;<span class="text-green-400">Booking</span>&gt; Bookings { <span class="text-pink-400">get; set;</span> }</div>
-                            <div class="pl-4 mt-2 text-gray-500">// Configured for SQL Server</div>
-                            <div class="text-gray-300">}</div>
-                        </div>
-
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
-                    </div>
-
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="mb-4">
-                            <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_system">System</span>
-                            <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition">GymSystem</h3>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-6 flex-grow leading-relaxed" data-i18n="proj3_desc">
-                            Komplett backend för medlemskap och bokningar. CRUD-operationer mot SQL Databas.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">SQL</span>
-                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">EF Core</span>
-                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">C#</span>
-                        </div>
-                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                            <a href="https://github.com/Jocke-1994/GymMembershipSystem" target="_blank" class="text-sm font-medium text-indigo-400 flex items-center gap-1 hover:text-white transition"><span data-i18n="view_code">Se kod</span> <span>↗</span></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="backend">
 
                     <a href="https://jocke-1994.github.io/SharpRunner/" class="block flex-col flex-grow hover:opacity-95 transition-opacity cursor-pointer">
 
@@ -543,24 +502,44 @@
 
                 </article>
 
-                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="backend">
-                    <div class="h-2 w-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="mb-4">
-                            <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_console">Konsolapp</span>
-                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Neverland Adventure</h3>
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="web">
+
+                    <a href="https://jocke-1994.github.io/napoli-pizzeria/" target="_blank" class="block flex-col flex-grow hover:opacity-95 transition-opacity cursor-pointer">
+
+                        <div class="relative w-full h-48 overflow-hidden bg-gray-900 project-slideshow">
+                            <img src="images/napoli-galleri.png" alt="Bildgalleri" class="slideshow-image active">
+                            <img src="images/napoli-pizza.png" alt="Våra Pizzor" class="slideshow-image inactive">
+                            <img src="images/napoli-kebab.png" alt="Kebab" class="slideshow-image inactive">
+                            <img src="images/napoli-barnmeny.png" alt="Barnmeny" class="slideshow-image inactive">
+                            <img src="images/napoli-sallader.png" alt="Sallader" class="slideshow-image inactive">
+                            <img src="images/napoli-vegetariskt.png" alt="Vegetariskt" class="slideshow-image inactive">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
                         </div>
-                        <p class="text-sm text-gray-400 mb-6 flex-grow leading-relaxed" data-i18n="proj1_desc">
-                            Interaktivt textbaserat äventyr som demonstrerar OOP och logikhantering.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">OOP</span>
-                            <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">C#</span>
+
+                        <div class="px-6 pt-6 pb-2 flex flex-col">
+                            <div class="mb-4">
+                                <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_webapp">Webbapplikation</span>
+                                <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition">Napoli Pizzeria</h3>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed" data-i18n="proj_pizzeria_desc">
+                                Modern responsiv pizzeriahemsida med meny, kontaktformulär och smooth scroll. Byggd med ren HTML, CSS och JavaScript utan frameworks.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">HTML</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">CSS</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">JavaScript</span>
+                            </div>
                         </div>
+                    </a>
+                    <div class="px-6 pb-6 mt-auto">
                         <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                            <a href="https://github.com/Jocke-1994/NeverlandAdventure" target="_blank" class="text-sm font-medium text-cyan-400 flex items-center gap-1 hover:text-white transition"><span data-i18n="view_code">Se kod</span> <span>↗</span></a>
+                            <a href="https://github.com/Jocke-1994/napoli-pizzeria" target="_blank" class="text-sm font-medium text-orange-400 flex items-center gap-1 hover:text-white transition">
+                                <span data-i18n="view_code">Se kod</span>
+                                <span>↗</span>
+                            </a>
                         </div>
                     </div>
+
                 </article>
 
             </div>
@@ -642,14 +621,13 @@
                 git_activity: "Kodaktivitet", view_profile: "Visa Profil →", git_push: "Pushar kod och levererar features kontinuerligt.",
                 projects_title: "Vad jag har byggt",
                 filter_all: "Alla", filter_web: "Webb & Frontend", filter_backend: "Backend & Logik",
-                type_webapp: "Webbapplikation", type_system: "System", type_game: "Spellogik", type_console: "Konsolapp",
+                type_webapp: "Webbapplikation", type_game: "Spellogik",
                 view_code: "Se kod",
                 contact_title: "Hör av dig", contact_desc: "Letar du efter en strukturerad utvecklare för LIA eller Junior-roller? Skicka ett mail.",
                 form_name: "Namn", form_msg: "Meddelande", form_btn: "Skicka Meddelande",
-                proj2_desc: "Travel Journal är en C#-konsolapplikation byggd med Spectre.Console för att planera, budgetera och logga både nya och gamla resor. Appen komb-inerar ett effektivt textgränssnitt med en interaktiv världskarta (HTML/JS) för att ge användaren en visuell och samlad översikt av sin resehistorik och statistik. ",
-                proj3_desc: "Komplett backend för medlemskap och bokningar. CRUD-operationer mot SQL Databas.",
+                proj2_desc: "Travel Journal är en C#-konsolapplikation byggd med Spectre.Console för att planera, budgetera och logga både nya och gamla resor. Appen kombinerar ett effektivt textgränssnitt med en interaktiv världskarta (HTML/JS) för att ge användaren en visuell och samlad översikt av sin resehistorik och statistik.",
                 proj4_desc: "Algoritmisk implementation av ett labyrintspel. Kollisionsdetektering och logik.",
-                proj1_desc: "Interaktivt textbaserat äventyr som demonstrerar OOP och logikhantering."
+                proj_pizzeria_desc: "Modern responsiv pizzeriahemsida med meny, kontaktformulär och smooth scroll. Byggd med ren HTML, CSS och JavaScript utan frameworks."
             },
             en: {
                 nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
@@ -674,14 +652,13 @@
                 git_activity: "Coding Activity", view_profile: "View Profile →", git_push: "Constantly pushing code & shipping features.",
                 projects_title: "What I've been building",
                 filter_all: "All", filter_web: "Web & Frontend", filter_backend: "Backend & Logic",
-                type_webapp: "Web App", type_system: "System", type_game: "Game Logic", type_console: "Console App",
+                type_webapp: "Web App", type_game: "Game Logic",
                 view_code: "View Code",
                 contact_title: "Let's talk", contact_desc: "Looking for a structured developer for LIA or Junior roles? I'm just an email away.",
                 form_name: "Name", form_msg: "Message", form_btn: "Send Message",
                 proj2_desc: "Travel Journal is a C# console application built with Spectre.Console for planning, budgeting, and logging both upcoming and past trips. The app combines an efficient text-based interface with an interactive world map (HTML/JS) to provide a visual and comprehensive overview of travel history and statistics.",
-                proj3_desc: "Complete backend for memberships and bookings. CRUD operations vs SQL Database.",
                 proj4_desc: "Algorithmic implementation of a maze game. Collision detection and logic.",
-                proj1_desc: "Interactive text-based adventure demonstrating OOP and logic handling."
+                proj_pizzeria_desc: "Modern responsive pizzeria website with menu, contact form and smooth scroll. Built with plain HTML, CSS and JavaScript without frameworks."
             }
         };
 
