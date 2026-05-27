@@ -504,6 +504,42 @@
 
                 <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="web">
 
+                    <a href="https://jocke-1994.github.io/QR-Generator" target="_blank" class="block flex-col flex-grow hover:opacity-95 transition-opacity cursor-pointer">
+
+                        <div class="relative w-full h-48 overflow-hidden bg-gray-900 project-slideshow">
+                            <img src="images/qr-gen-empty.png" alt="QR Generator tom vy" class="slideshow-image active">
+                            <img src="images/qr-gen-generated.png" alt="QR Generator med genererad kod" class="slideshow-image inactive">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
+                        </div>
+
+                        <div class="px-6 pt-6 pb-2 flex flex-col">
+                            <div class="mb-4">
+                                <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_webapp">Webbapplikation</span>
+                                <h3 class="text-xl font-bold text-white group-hover:text-green-400 transition">QR-Generator</h3>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed" data-i18n="proj_qr_desc">
+                                QR-kodgenerator med terminal-estetik byggd i React och Vite. Stöder anpassade etiketter med valfri position, realtidslogg och PNG-export.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">React</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">Vite</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">JavaScript</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="px-6 pb-6 mt-auto">
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <a href="https://github.com/Jocke-1994/QR-Generator" target="_blank" class="text-sm font-medium text-green-400 flex items-center gap-1 hover:text-white transition">
+                                <span data-i18n="view_code">Se kod</span>
+                                <span>↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </article>
+
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="web">
+
                     <a href="https://jocke-1994.github.io/napoli-pizzeria/" target="_blank" class="block flex-col flex-grow hover:opacity-95 transition-opacity cursor-pointer">
 
                         <div class="relative w-full h-48 overflow-hidden bg-gray-900 project-slideshow">
@@ -627,7 +663,8 @@
                 form_name: "Namn", form_msg: "Meddelande", form_btn: "Skicka Meddelande",
                 proj2_desc: "Travel Journal är en C#-konsolapplikation byggd med Spectre.Console för att planera, budgetera och logga både nya och gamla resor. Appen kombinerar ett effektivt textgränssnitt med en interaktiv världskarta (HTML/JS) för att ge användaren en visuell och samlad översikt av sin resehistorik och statistik.",
                 proj4_desc: "Algoritmisk implementation av ett labyrintspel. Kollisionsdetektering och logik.",
-                proj_pizzeria_desc: "Modern responsiv pizzeriahemsida med meny, kontaktformulär och smooth scroll. Byggd med ren HTML, CSS och JavaScript utan frameworks."
+                proj_pizzeria_desc: "Modern responsiv pizzeriahemsida med meny, kontaktformulär och smooth scroll. Byggd med ren HTML, CSS och JavaScript utan frameworks.",
+                proj_qr_desc: "QR-kodgenerator med terminal-estetik byggd i React och Vite. Stöder anpassade etiketter med valfri position, realtidslogg och PNG-export."
             },
             en: {
                 nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
@@ -658,7 +695,8 @@
                 form_name: "Name", form_msg: "Message", form_btn: "Send Message",
                 proj2_desc: "Travel Journal is a C# console application built with Spectre.Console for planning, budgeting, and logging both upcoming and past trips. The app combines an efficient text-based interface with an interactive world map (HTML/JS) to provide a visual and comprehensive overview of travel history and statistics.",
                 proj4_desc: "Algorithmic implementation of a maze game. Collision detection and logic.",
-                proj_pizzeria_desc: "Modern responsive pizzeria website with menu, contact form and smooth scroll. Built with plain HTML, CSS and JavaScript without frameworks."
+                proj_pizzeria_desc: "Modern responsive pizzeria website with menu, contact form and smooth scroll. Built with plain HTML, CSS and JavaScript without frameworks.",
+                proj_qr_desc: "QR code generator with terminal aesthetic built with React and Vite. Supports custom labels with configurable position, real-time log, and PNG export."
             }
         };
 
