@@ -20,7 +20,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- SEO -->
-    <meta name="description" content="Joakim Rehn – Fullstack .NET-utvecklare baserad i Göteborg. Söker LIA-plats (aug–nov 2026). Specialiserad på C#, .NET, React och Azure.">
+    <meta name="description" content="Joakim Rehn – Fullstack .NET-utvecklare baserad i Göteborg. Söker LIA2-plats (1 feb – 14 maj 2027). Specialiserad på C#, .NET, React och Azure.">
     <meta name="keywords" content="Joakim Rehn, .NET utvecklare, fullstack, C#, React, Azure, LIA, Göteborg, portfolio">
     <meta name="author" content="Joakim Rehn">
     <link rel="canonical" href="https://jocke-1994.github.io/Portfolio/">
@@ -29,7 +29,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jocke-1994.github.io/Portfolio/">
     <meta property="og:title" content="Joakim Rehn | .NET Fullstack Developer">
-    <meta property="og:description" content="Fullstack .NET-utvecklare baserad i Göteborg. Söker LIA-plats (aug–nov 2026). Specialiserad på C#, .NET, React och Azure.">
+    <meta property="og:description" content="Fullstack .NET-utvecklare baserad i Göteborg. Söker LIA2-plats (1 feb – 14 maj 2027). Specialiserad på C#, .NET, React och Azure.">
     <meta property="og:image" content="https://jocke-1994.github.io/Portfolio/images/jag.jpg">
     <meta property="og:locale" content="sv_SE">
     <meta property="og:locale:alternate" content="en_GB">
@@ -37,7 +37,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Joakim Rehn | .NET Fullstack Developer">
-    <meta name="twitter:description" content="Fullstack .NET-utvecklare baserad i Göteborg. Söker LIA-plats (aug–nov 2026).">
+    <meta name="twitter:description" content="Fullstack .NET-utvecklare baserad i Göteborg. Söker LIA2-plats (1 feb – 14 maj 2027).">
     <meta name="twitter:image" content="https://jocke-1994.github.io/Portfolio/images/jag.jpg">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -245,7 +245,8 @@
 
         <!-- Background slideshow -->
         <div id="hero-bg-slideshow" class="absolute inset-0 z-0 overflow-hidden">
-            <div class="hero-bg-slide active" style="background-image: url('images/WorldMap.png')"></div>
+            <div class="hero-bg-slide active" style="background-image: url('images/samhall-flode.png'); filter: blur(3px) brightness(0.55); transform: scale(1.06)"></div>
+            <div class="hero-bg-slide" style="background-image: url('images/WorldMap.png')"></div>
             <div class="hero-bg-slide" style="background-image: url('images/dynamicLevel1.png')"></div>
             <div class="hero-bg-slide" style="background-image: url('images/qr-gen-generated.png'); filter: blur(3px) brightness(0.55); transform: scale(1.06)"></div>
             <div class="hero-bg-slide" style="background-image: url('images/napoli-pizza.png'); background-position: center 30%; filter: blur(3px) brightness(0.5); transform: scale(1.06)"></div>
@@ -319,7 +320,7 @@
                         <span class="text-gray-400 font-medium" data-i18n="card_current">Just nu</span>
                         <div class="bg-slate-900/80 border border-slate-700 px-3 py-1.5 rounded-full flex items-center gap-2 self-start sm:self-auto">
                             <span class="w-2 h-2 rounded-full bg-green-500 lia-dot flex-shrink-0"></span>
-                            <span class="text-xs text-white font-semibold uppercase whitespace-nowrap" data-i18n="card_lia">Söker LIA: 31 aug – 6 nov 2026</span>
+                            <span class="text-xs text-white font-semibold uppercase whitespace-nowrap" data-i18n="card_lia">Söker LIA2: 1 feb – 14 maj 2027</span>
                         </div>
                     </div>
 
@@ -490,6 +491,40 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="web backend">
+                    <a href="https://samhallsinformation.se" target="_blank" class="flex flex-col flex-grow">
+                        <div class="relative w-full h-48 overflow-hidden bg-gray-900 project-slideshow">
+                            <img src="images/samhall-flode.png" alt="Samhällsinformation – samlat nyhetsflöde" loading="lazy" class="slideshow-image active">
+                            <img src="images/samhall-smhi.png" alt="Samhällsinformation – SMHI-varningar" loading="lazy" class="slideshow-image inactive">
+                            <img src="images/samhall-nyheter.png" alt="Samhällsinformation – nyheter och uppdateringar" loading="lazy" class="slideshow-image inactive">
+                            <img src="images/samhall-om.png" alt="Samhällsinformation – om tjänsten" loading="lazy" class="slideshow-image inactive">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6 pb-4 flex flex-col flex-grow">
+                            <div class="mb-4">
+                                <span class="inline-block px-2 py-1 rounded border border-slate-700 bg-slate-800 text-[10px] text-gray-400 uppercase tracking-wide mb-2" data-i18n="type_fullstack">Fullstack · I drift</span>
+                                <h3 class="text-xl font-bold text-white group-hover:text-violet-400 transition">Samhällsinformation</h3>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-4 flex-grow leading-relaxed" data-i18n="proj_samhall_desc">
+                                Samlar offentlig information från svenska myndigheter som Polisen, SMHI, Trafikverket och Krisinformation i ett gemensamt flöde, utan att tolka eller omformulera källmaterialet. En bakgrundstjänst i .NET hämtar nya händelser löpande. Startade som skolprojekt men drivs som en riktig produkt, med konton, platsfilter och CI/CD.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">C# / .NET 10</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">ASP.NET Core</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">EF Core</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">PostgreSQL</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">React</span>
+                                <span class="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded border border-slate-700">TypeScript</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="px-6 pb-6 pt-4 border-t border-slate-800 flex gap-4 items-center">
+                        <a href="https://samhallsinformation.se" target="_blank" class="text-sm font-medium text-violet-400 flex items-center gap-1 hover:text-white transition">
+                            <span data-i18n="live_site">Besök sajten</span> <span>↗</span>
+                        </a>
+                    </div>
+                </article>
 
                 <article class="project-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col group" data-category="web">
                     <a href="https://github.com/Jocke-1994/Travel-Journal" target="_blank" class="flex flex-col flex-grow">
@@ -696,7 +731,7 @@
                 btn_projects: "Se Projekt", btn_contact: "Kontakta Mig", btn_request_cv: "Begär CV",
                 cv_prefill: "Hej Joakim! Jag är intresserad av att ta del av ditt CV.",
                 stack_back: "Backend", stack_front: "Frontend", stack_arch: "Arkitektur",
-                card_current: "Just nu", card_lia: "Söker LIA: 31 aug – 6 nov 2026", card_looking: "Söker: Backend / Fullstack", card_reliable: "⚡ Pålitlig & Driven",
+                card_current: "Just nu", card_lia: "Söker LIA2: 1 feb – 14 maj 2027", card_looking: "Söker: Backend / Fullstack", card_reliable: "⚡ Pålitlig & Driven",
                 about_label: "Om mig", about_title: "Vem jag är",
                 about_text1: "Jag är en disciplinerad systemutvecklare som är baserad i Göteborg. Innan jag började arbeta med IT, har jag arbetat inom logistik på ICA och service inom Friskis & Svettis. Där jag har haft ansvar och effektivitet.",
                 about_text2: "Nu har jag mitt fokus på programmering. Jag har specialiserat mig på strukturerad backend med Clean architecture och intuitiv frontend. Jag skriver inte bara kod utan skapar lösningar som är enkla att underhålla och testbara.",
@@ -712,13 +747,14 @@
                 git_activity: "Kodaktivitet", view_profile: "Visa Profil →", git_push: "Pushar kod och levererar features kontinuerligt.",
                 projects_title: "Vad jag har byggt",
                 filter_all: "Alla", filter_web: "Webb & Frontend", filter_backend: "Backend & Logik",
-                type_webapp: "Webbapplikation", type_game: "Spellogik",
+                type_webapp: "Webbapplikation", type_game: "Spellogik", type_fullstack: "Fullstack · I drift", live_site: "Besök sajten",
                 view_code: "Se kod", live_demo: "Live Demo",
                 contact_title: "Hör av dig", contact_desc: "Letar du efter en strukturerad utvecklare för LIA eller Junior-roller? Skicka ett mail.",
                 form_name: "Namn", form_msg: "Meddelande", form_btn: "Skicka Meddelande",
                 proj2_desc: "Utbildningens första grupprojekt — en C#-konsolapplikation för att planera, budgetera och logga resor. Den tekniska höjdpunkten var att lösa integrationen med en interaktiv HTML/JS-världskarta som visualiserar resehistoriken, något som krävde att koppla ihop C# och webb från grunden.",
                 proj4_desc: "Labyrintspel med fokus på algoritmisk logik och kollisionsdetektering, implementerat utan spelmotor. Projektet utforskade hur spelmekanik byggs från grunden med rörelseprediktering och dynamiska banor. Spelbara direkt i webbläsaren.",
                 proj_pizzeria_desc: "Startade som ett lärdomsprojekt för att förstå hur man bygger och driftsätter en hemsida från grunden — utan frameworks. Resultatet blev en fullt responsiv restauranghemsida med menysystem, kontaktformulär och smooth scroll.",
+                proj_samhall_desc: "Samlar offentlig information från svenska myndigheter som Polisen, SMHI, Trafikverket och Krisinformation i ett gemensamt flöde, utan att tolka eller omformulera källmaterialet. En bakgrundstjänst i .NET hämtar nya händelser löpande. Startade som skolprojekt men drivs som en riktig produkt, med konton, platsfilter och CI/CD.",
                 proj_qr_desc: "QR-kodgenerator byggd i React och Vite. Terminal-estetiken växte fram organiskt under utvecklingen och passade projektets tekniska känsla. Stöder anpassade etiketter med justerbar textstorlek, realtidslogg och PNG-export."
             },
             en: {
@@ -729,7 +765,7 @@
                 btn_projects: "View Projects", btn_contact: "Contact Me", btn_request_cv: "Request CV",
                 cv_prefill: "Hi Joakim! I'm interested in taking a look at your CV.",
                 stack_back: "Backend", stack_front: "Frontend", stack_arch: "Architecture",
-                card_current: "Currently", card_lia: "LIA: 31 aug – 6 nov 2026", card_looking: "Looking for: Backend / Fullstack", card_reliable: "⚡ Proven Reliability",
+                card_current: "Currently", card_lia: "LIA2: 1 Feb – 14 May 2027", card_looking: "Looking for: Backend / Fullstack", card_reliable: "⚡ Proven Reliability",
                 about_label: "About", about_title: "Who I am",
                 about_text1: "I am a disciplined system developer based in Gothenburg. Prior to my career in IT, I worked in logistics at ICA and guest services at Friskis & Svettis, where responsibility and efficiency were highly important.",
                 about_text2: "Now, my focus is on programming. I specialize in structured backend with Clean Architecture and intuitive frontends. I don´t just write code, but create solutions that are easy to maintain and test.",
@@ -745,13 +781,14 @@
                 git_activity: "Coding Activity", view_profile: "View Profile →", git_push: "Constantly pushing code & shipping features.",
                 projects_title: "What I've been building",
                 filter_all: "All", filter_web: "Web & Frontend", filter_backend: "Backend & Logic",
-                type_webapp: "Web App", type_game: "Game Logic",
+                type_webapp: "Web App", type_game: "Game Logic", type_fullstack: "Fullstack · Live", live_site: "Visit site",
                 view_code: "View Code", live_demo: "Live Demo",
                 contact_title: "Let's talk", contact_desc: "Looking for a structured developer for LIA or Junior roles? I'm just an email away.",
                 form_name: "Name", form_msg: "Message", form_btn: "Send Message",
                 proj2_desc: "First group project of the education — a C# console application for planning, budgeting and logging trips. The technical highlight was integrating an interactive HTML/JS world map that visualizes travel history, which required connecting C# and the web from scratch.",
                 proj4_desc: "Maze game focused on algorithmic logic and collision detection, built without a game engine. The project explored implementing game mechanics from scratch with movement prediction and dynamic levels. Playable directly in the browser.",
                 proj_pizzeria_desc: "Started as a learning project to understand how to build and deploy a website from scratch — without any frameworks. The result is a fully responsive restaurant site with a menu system, contact form and smooth scroll.",
+                proj_samhall_desc: "Aggregates public information from Swedish authorities such as the Police, SMHI, the Transport Administration and Krisinformation into a single feed, without interpreting or rewriting the source material. A .NET background service fetches new events continuously. Started as a school project but runs as a real product, with accounts, location filtering and CI/CD.",
                 proj_qr_desc: "QR code generator built with React and Vite. The terminal aesthetic emerged organically during development and suited the project's technical feel. Supports custom labels with adjustable font size, real-time log and PNG export."
             }
         };
@@ -869,7 +906,7 @@
             typeWriter();
         }
 
-        const heroBgProjectNames = ['Travel Journal', 'SharpRunner', 'QR-Generator', 'Napoli Pizzeria'];
+        const heroBgProjectNames = ['Samhällsinformation', 'Travel Journal', 'SharpRunner', 'QR-Generator', 'Napoli Pizzeria'];
         let heroBgIndex = 0;
 
         function nextHeroBg() {
@@ -912,7 +949,7 @@
             btnElement.classList.add('bg-indigo-600', 'text-white');
 
             document.querySelectorAll('.project-card').forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
+                if (category === 'all' || card.getAttribute('data-category').split(' ').includes(category)) {
                     card.style.display = 'flex';
                     setTimeout(() => card.style.opacity = 1, 50);
                 } else {
